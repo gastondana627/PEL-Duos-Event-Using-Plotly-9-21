@@ -1,0 +1,44 @@
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
+
+
+# Add table data
+
+table_data = [['Team', 'Kills', 'Damage', 'Extra Point/EP', 'Total Team Points'],
+              ['1st: Winners Circle', 55, 13735, 0, 120],
+              ['2nd: sackpaxx', 54, 12321, 0, 114],
+              ['3rd: PhazeWalkerz', 44, 13168, 0, 99],
+               ['4th: Rat Clan', 17, 6861, 0, 52],
+              ['5th: Poor Hungry', 22, 5540, 0, 32]]
+
+
+
+
+# Initialize a fig with ff.create_table(table_data)
+figg = ff.create_table(table_data, height_constant=100)
+#figg.show()
+
+# Add graph data
+teams = ['WC-AuthenticWins', 'WC-RushBroski', 'PH-BriiBird', 'PH-Raxinity', 'PW-GalacticBasket', 'PW-JohnnyBoy2304', 'RC-MysteryExpert', 'RC-WarmKetchupWater', 'SP-ObtainedJarl', 'SP-Xanny710']
+Kills = [30, 25, 10, 12, 22, 22, 9, 8, 30, 24]
+Damage = [7219, 6516, 2451, 3089, 5043, 8125, 4369, 2492, 6694, 5627]
+
+figg.add_trace(go.Bar(x=teams, y=Kills, xaxis='x2', yaxis='y2',
+                marker=dict(color='Black'),
+                name='<br>Kills'))
+
+figg.add_trace(go.Bar(x=teams, y=Damage, xaxis='x2', yaxis='y2',
+                marker=dict(color='Orange'),
+                name='<br>Damage'))
+
+figg.update_layout(
+    title_text = 'DNAnual Player Development Results 9/20/21',
+    height = 800,
+    margin = {'t':75, 'l':50},
+    yaxis = {'domain': [0, .45]},
+    xaxis2 = {'anchor': 'y2'},
+    yaxis2 = {'domain': [.6, 1], 'anchor': 'x2', 'title': 'Kill & Damage'}
+)
+
+
+figg.show()
